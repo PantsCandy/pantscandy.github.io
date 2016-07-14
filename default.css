@@ -40,7 +40,42 @@ body {
 #reportlink a {
     color:lightgray;
 }
-#pantscandyiphone {
+
+
+#links {
+    width:400px;
+    background:darkred;
+    color: white;
+    padding: .5em;
+    margin: 1em auto;
+    text-color: black;
+    text-align: center;
+    font-size: 1em;
+    border: 2px solid black;
+}
+
+#links a {
+    color: white;
+}
+
+#prevlink {
+    float:left;
+}
+
+#prevlink a {
+    text-decoration: none;
+}
+
+#nextlink {
+    float:right;
+}
+
+#nextlink a {
+    text-decoration: none;
+}
+
+
+#iphone {
     margin-top: 3em;
     margin: 2em auto;
     width: 400px;
@@ -136,3 +171,101 @@ header {
     left: -50px;
     transform: rotateY(180deg);
 }
+
+
+
+
+/* ------------------------------------------
+PURE CSS SPEECH BUBBLES
+by Nicolas Gallagher
+- http://nicolasgallagher.com/pure-css-speech-bubbles/
+
+http://nicolasgallagher.com
+http://twitter.com/necolas
+
+Created: 02 March 2010
+Version: 1.2 (03 March 2011)
+
+Dual licensed under MIT and GNU GPLv2 Nicolas Gallagher
+------------------------------------------ */
+
+/* NOTE: Some declarations use longhand notation so that it can be clearly
+explained what specific properties or values do and what their relationship
+is to other properties or values in creating the effect */
+
+/* ============================================================================================================================
+== GENERAL STYLES
+** ============================================================================================================================ */
+
+#quote {
+    padding:0;
+    margin:2em;
+    font:1em/1.4 Cambria, Georgia, sans-serif;
+    color:#333;
+}
+
+
+/* ============================================================================================================================
+== OVAL SPEECH BUBBLE WITH QUOTATION MARKS (more CSS3)
+** ============================================================================================================================ */
+
+.oval-quotes {
+    position:relative;
+    width:400px;
+    margin:2em auto 10px;
+    color:#000;
+    background:#ffed26;
+    /* css3 */
+    /*
+    NOTES:
+    -webkit-border-radius:Apx Bpx; // produces oval in safari 4 and chrome 4
+    -webkit-border-radius:Apx / Bpx; // produces oval in chrome 4 (again!) but not supported in safari 4
+    Not correct application of the current spec, therefore, using longhand to avoid future problems with webkit corrects this
+    */
+    -webkit-border-top-left-radius:400px 350px;
+    -webkit-border-top-right-radius:400px 350px;
+    -webkit-border-bottom-right-radius:400px 350px;
+    -webkit-border-bottom-left-radius:400px 350px;
+    -moz-border-radius:400px / 350px;
+    border-radius:400px / 350px;
+}
+
+/* creates opening quotation mark */
+.oval-quotes:before {
+    content:"\201C";
+    position:absolute;
+    z-index:1;
+    top:20px;
+    left:-20px;
+    font:80px/1 Georgia, serif;
+    color:#ffed26;
+}
+
+/* creates closing quotation mark */
+.oval-quotes:after {
+    content:"\201D";
+    position:absolute;
+    z-index:1;
+    bottom:0;
+    right:-20px;
+    font:80px/0.25 Georgia, serif;
+    color:#ffed26;
+}
+
+.oval-quotes p {
+    width:250px;
+    padding:1.5em 0 1em 0;
+    margin:0 auto;
+    text-align:center;
+    font-size:35px;
+}
+
+.oval-quotes + p {
+    position:relative; /* part of the IE8 width compromise */
+    width:150px;
+    margin:0 0 2em;
+    font-size:18px;
+    font-weight:bold;
+}
+
+

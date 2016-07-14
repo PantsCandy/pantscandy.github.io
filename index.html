@@ -18,18 +18,77 @@
 </head>
 <body>
 
-<div id="headerbanner">Texts from Jeremy "Pants Candy" Durham<br>
+
+<div id="headerbanner">Quotes and Texts from Jeremy "Pants Candy" Durham<br>
     <div id="subheading">Republican State Representative for <a href="http://www.capitol.tn.gov/house/members/h65.html">Tennessee's 65th District</a></div>
     <div id="reportlink">Compiled from <a href="docs/pantscandy_jeremy_durham_report.pdf">Tennessee House of Representatives Final Report</a></div>
 </div>
 
-<div id="pantscandyiphone"></div>
+<div id="links">
+    <div id="prevlink"></div>
+    <div id="nextlink"></div>
+    <div id="permlink"></div>
+</div>
+
+<div id="pantscandy"></div>
 
 </body>
 </html>
 
 <script>
-    var textfile = Math.floor(Math.random() * 6) + 1;
-    $("#pantscandyiphone").load("texts/" + textfile + ".html", function() {
-    });
+    var baseurl = [location.protocol, '//', location.host, location.pathname].join('');
+
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+
+    var page = parseInt(getUrlParameter('p'));
+    var maxpages = 10;
+
+    if ( isNaN(page) ) {
+        var page = Math.floor(Math.random() * maxpages) + 1;
+    }
+
+    $("#pantscandy").load("texts/" + page + ".html", function() {});
+
+    // Get next and previous pages
+    nextpage = page + 1;
+    if ( nextpage > maxpages ) {
+        nextpage = 1;
+    }
+    prevpage = page - 1;
+    if ( prevpage == 0 ) {
+        prevpage = maxpages;
+    }
+    $("#prevlink").html('<a href="?p=' + prevpage + '">&lt; &lt; &lt;</a>');
+    $("#nextlink").html('<a href="?p=' + nextpage + '">&gt; &gt; &gt;</a><br>');
+    $("#permlink").html('<a href="?p=' + page + '">Permanent link to this Pants Candy</a>');
+
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
